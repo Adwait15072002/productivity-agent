@@ -1,0 +1,5 @@
+model:
+  provider: groq
+  name: llama-3.3-70b-versatile
+tools:
+  enabled: []
