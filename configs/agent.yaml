@@ -1,5 +1,5 @@
 model:
   provider: groq
-  name: llama-3.3-70b-versatile
+  name: openai/gpt-oss-20b
 tools:
   enabled: []
