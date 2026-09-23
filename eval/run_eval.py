@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 from langchain_core.messages import ToolMessage
 from productivity_agent.harness.runner import run
@@ -59,6 +60,11 @@ def main():
             print(f"    fabrications: {r['fabrication_detail']['raw']}")
         if r.get("known_limitation") and not r["passed"]:
             print(f"    (documented known limitation: {r['known_limitation']})")
+
+    required_task_ids = {t["id"] for t in tasks if not t.get("known_limitation")}
+    required_failures = [r for r in results if r["id"] in required_task_ids and not r["passed"]]
+    if required_failures:
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
