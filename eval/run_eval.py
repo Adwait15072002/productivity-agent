@@ -43,6 +43,7 @@ def main():
             "tool_ok": tool_ok,
             "grounded_detail": grounded_detail,
             "fabrication_detail": fabrication_detail,
+            "known_limitation": task.get("known_limitation"),
             "passed": tool_ok and grounded_ok and fabrication_ok,
         })
 
@@ -56,6 +57,8 @@ def main():
             print(f"    missing facts: {r['grounded_detail']['missing']}")
         if r["fabrication_detail"] and not r["fabrication_detail"]["passed"]:
             print(f"    fabrications: {r['fabrication_detail']['raw']}")
+        if r.get("known_limitation") and not r["passed"]:
+            print(f"    (documented known limitation: {r['known_limitation']})")
 
 if __name__ == "__main__":
     main()

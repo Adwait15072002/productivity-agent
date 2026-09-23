@@ -9,6 +9,8 @@ from langchain_core.messages import SystemMessage
 from productivity_agent.state import AgentState
 from productivity_agent.tools.tasks import list_tasks
 from productivity_agent.tools.calendar import list_events
+from productivity_agent.tools.notes import search_notes
+
 
 
 load_dotenv()

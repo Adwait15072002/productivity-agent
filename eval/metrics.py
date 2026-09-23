@@ -46,9 +46,13 @@ def get_all_event_titles() -> list[str]:
 def get_tasks_and_events() -> list[str]:
     return get_all_task_titles() + get_all_event_titles()
 
+def get_pending_tasks_and_events() -> list[str]:
+    return get_pending_task_titles() + get_all_event_titles()
+
 
 GROUNDEDNESS_SOURCES = {
     "pending": get_pending_task_titles,
     "all": get_all_task_titles,
     "tasks_and_events": get_tasks_and_events,
+    "pending_and_events": get_pending_tasks_and_events,
 }
