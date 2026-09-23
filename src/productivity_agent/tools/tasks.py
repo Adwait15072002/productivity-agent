@@ -15,4 +15,7 @@ def list_tasks(only_pending: bool = True) -> str:
     conn.close()
     if not rows:
         return "No tasks found."
-    return "\n".join(f"[{r[0]}] {r[1]} (due {r[2]})" for r in rows)
+    return "\n".join(
+        f"[{r[0]}] {r[1]} (due {r[2]}, {'done' if r[3] else 'pending'})"
+        for r in rows
+    )
