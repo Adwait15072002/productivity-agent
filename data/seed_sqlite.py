@@ -5,12 +5,15 @@ DB_PATH = Path("data/mock.db")
 
 def seed():
     conn = sqlite3.connect(DB_PATH)
+    conn.execute("DELETE FROM tasks")
+    conn.execute("DELETE FROM events")
     conn.executemany(
         "INSERT INTO tasks (title, due_date, done) VALUES (?, ?, ?)",
         [
             ("Finish Q3 report", "2026-09-15", 0),
             ("Email Raj about the trial extension", "2026-09-14", 0),
             ("Renew domain registration", "2026-10-01", 0),
+            ("Submit expense reimbursement", "2026-09-10", 1),
         ],
     )
     conn.executemany(
