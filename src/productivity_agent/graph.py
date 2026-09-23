@@ -38,7 +38,7 @@ def executor(state: AgentState) -> dict:
         try:
             output = tool.invoke(call["args"])
         except Exception as e:
-            output = f"Tool error: {e}"   # proto-guardrail — real error handling comes in guardrails.py later
+            output = f"Tool error: {e}"   
         results.append(ToolMessage(content=str(output), tool_call_id=call["id"]))
     return {"messages": results}
 

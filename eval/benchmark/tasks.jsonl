@@ -1,0 +1,3 @@
+{"id": "t1", "query": "What tasks do I have pending?", "check_type": "tool_call", "expected_tool": "list_tasks"}
+{"id": "t2", "query": "Show me everything on my to-do list, including finished stuff", "check_type": "tool_call", "expected_tool": "list_tasks"}
+{"id": "t3", "query": "What's the weather like today?", "check_type": "tool_call", "expected_tool": null}

@@ -11,3 +11,4 @@ wheels/
 .env
 data/*.db
 data/qdrant_storage/
+.DS_Store
