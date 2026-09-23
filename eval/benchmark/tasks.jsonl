@@ -1,3 +1,4 @@
 {"id": "t1", "query": "What tasks do I have pending?", "expected_tool": "list_tasks", "groundedness_source": "pending"}
 {"id": "t2", "query": "Show me everything on my to-do list, including finished stuff", "expected_tool": "list_tasks", "groundedness_source": "all"}
 {"id": "t3", "query": "What's the weather like today?", "expected_tool": null, "groundedness_source": null}
+{"id": "t4", "query": "What do I have going on — both tasks and calendar?", "expected_tool": ["list_tasks", "list_events"], "groundedness_source": "tasks_and_events"}

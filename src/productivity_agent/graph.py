@@ -8,10 +8,12 @@ from langchain_core.messages import SystemMessage
 
 from productivity_agent.state import AgentState
 from productivity_agent.tools.tasks import list_tasks
+from productivity_agent.tools.calendar import list_events
+
 
 load_dotenv()
 
-TOOLS = [list_tasks]
+TOOLS = [list_tasks, list_events]
 TOOLS_BY_NAME = {t.name: t for t in TOOLS}
 SYSTEM_PROMPT = Path("src/productivity_agent/prompts/system.md").read_text()
 

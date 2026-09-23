@@ -13,6 +13,8 @@ def check_tool_call(messages, expected_tool) -> bool:
 
     if expected_tool is None:
         return len(called_tools) == 0
+    if isinstance(expected_tool, list):
+        return all(t in called_tools for t in expected_tool)
     return expected_tool in called_tools
 
 
@@ -35,8 +37,18 @@ def get_all_task_titles() -> list[str]:
     conn.close()
     return titles
 
+def get_all_event_titles() -> list[str]:
+    conn = sqlite3.connect(DB_PATH)
+    titles = [row[0] for row in conn.execute("SELECT title FROM events")]
+    conn.close()
+    return titles
+
+def get_tasks_and_events() -> list[str]:
+    return get_all_task_titles() + get_all_event_titles()
+
 
 GROUNDEDNESS_SOURCES = {
     "pending": get_pending_task_titles,
     "all": get_all_task_titles,
+    "tasks_and_events": get_tasks_and_events,
 }
